@@ -20,4 +20,4 @@ all: $(OBJ)
 # Delete build files
 clean:
 	rm -f ${BIN_DIR}/*.out
-	rm -f ${OBJ_DIR}/*.o%  
+	rm -f ${OBJ_DIR}/*.o 
