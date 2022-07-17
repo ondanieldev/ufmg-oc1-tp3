@@ -7,7 +7,7 @@ using namespace std;
 class MainMemory
 {
 private:
-  string words[1024];
+  string words[4096];
 
 public:
   MainMemory();
