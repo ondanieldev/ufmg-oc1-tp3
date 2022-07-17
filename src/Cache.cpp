@@ -52,6 +52,24 @@ void Cache::copy_from_memory(string bin_address)
   }
 }
 
+void Cache::write_back(string bin_address)
+{
+  string index = get_index(bin_address);
+  int dec_index = Utils::bin_to_dec_32(index);
+  string tag = this->blocks[dec_index].tag;
+  string word_offset = get_word_offset(bin_address);
+  string memory_offset, memory_address;
+
+  for (int i = 0; i < 4; ++i)
+  {
+    memory_offset = Utils::dec_to_bin_2(i);
+    memory_address = tag + index + memory_offset + word_offset;
+    this->memory.write(memory_address, this->blocks[dec_index].words[i]);
+  }
+
+  this->blocks[dec_index].isDirty = false;
+}
+
 string Cache::read(string bin_address)
 {
   string tag = this->get_tag(bin_address);
@@ -71,6 +89,10 @@ string Cache::read(string bin_address)
   }
 
   this->misses++;
+  if (this->blocks[dec_index].isDirty)
+  {
+    write_back(bin_address);
+  }
   copy_from_memory(bin_address);
   data = this->blocks[dec_index].words[dec_offset];
   return "M";

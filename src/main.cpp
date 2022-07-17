@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "Cache.h"
 #include "Utils.h"
 using namespace std;
@@ -34,7 +35,7 @@ int main()
     output += " " + cpuResult + "\n";
   }
 
-  cout << "READS:"
+  cout << setprecision(3) << "READS:"
        << " " << cache.getReads() << endl
        << "WRITES:"
        << " " << cache.getWrites() << endl
@@ -47,7 +48,7 @@ int main()
        << "MISS RATE:"
        << " " << cache.getMissRate() << endl
        << endl
-       << output << endl;
+       << output;
 
   return 0;
 }
