@@ -5,7 +5,7 @@ CacheBlock::CacheBlock()
   this->is_dirty = false;
   this->is_valid = false;
   this->tag = "";
-  for (int i = 0; i < 4; ++i)
+  for (int i = 0; i < Utils::BLOCK_SIZE; ++i)
   {
     this->words[i] = "";
   }

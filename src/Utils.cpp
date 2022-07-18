@@ -1,8 +1,6 @@
 #include <bitset>
 #include "Utils.h"
 
-#define ADDRESS_SIZE 32
-
 string Utils::dec_to_bin_32(int decimal)
 {
   string binary = bitset<32>(decimal).to_string();

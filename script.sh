@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-make && ./bin/tp03.out < "$1"
+make clean && make && ./bin/tp03.out < "$1"

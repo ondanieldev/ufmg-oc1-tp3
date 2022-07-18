@@ -3,7 +3,7 @@
 
 MainMemory::MainMemory()
 {
-  for (int i = 0; i < 4096; ++i)
+  for (int i = 0; i < Utils::MEMORY_SIZE; ++i)
   {
     this->words[i] = "data_" + to_string(i);
   }
