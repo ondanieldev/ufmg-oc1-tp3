@@ -2,8 +2,8 @@
 
 CacheBlock::CacheBlock()
 {
-  this->isDirty = false;
-  this->isValid = false;
+  this->is_dirty = false;
+  this->is_valid = false;
   this->tag = "";
   for (int i = 0; i < 4; ++i)
   {

@@ -43,7 +43,7 @@ void Cache::copy_from_memory(string bin_address)
   string memory_offset, memory_address;
 
   this->blocks[dec_index].tag = tag;
-  this->blocks[dec_index].isValid = true;
+  this->blocks[dec_index].is_valid = true;
   for (int i = 0; i < 4; ++i)
   {
     memory_offset = Utils::dec_to_bin_2(i);
@@ -67,7 +67,7 @@ void Cache::write_back(string bin_address)
     this->memory.write(memory_address, this->blocks[dec_index].words[i]);
   }
 
-  this->blocks[dec_index].isDirty = false;
+  this->blocks[dec_index].is_dirty = false;
 }
 
 string Cache::read(string bin_address)
@@ -81,7 +81,7 @@ string Cache::read(string bin_address)
 
   this->reads++;
 
-  if (this->blocks[dec_index].isValid && this->blocks[dec_index].tag == tag)
+  if (this->blocks[dec_index].is_valid && this->blocks[dec_index].tag == tag)
   {
     this->hits++;
     data = this->blocks[dec_index].words[dec_offset];
@@ -89,7 +89,7 @@ string Cache::read(string bin_address)
   }
 
   this->misses++;
-  if (this->blocks[dec_index].isDirty)
+  if (this->blocks[dec_index].is_dirty)
   {
     write_back(bin_address);
   }
@@ -108,42 +108,42 @@ string Cache::write(string bin_address, string data)
 
   this->writes++;
 
-  if (!this->blocks[dec_index].isValid || this->blocks[dec_index].tag != tag)
+  if (!this->blocks[dec_index].is_valid || this->blocks[dec_index].tag != tag)
   {
     copy_from_memory(bin_address);
   }
 
   this->blocks[dec_index].words[dec_offset] = data;
-  this->blocks[dec_index].isDirty = true;
+  this->blocks[dec_index].is_dirty = true;
   return "W";
 }
 
-int Cache::getReads()
+int Cache::get_reads()
 {
   return this->reads;
 }
 
-int Cache::getWrites()
+int Cache::get_writes()
 {
   return this->writes;
 }
 
-int Cache::getHits()
+int Cache::get_hits()
 {
   return this->hits;
 }
 
-int Cache::getMisses()
+int Cache::get_misses()
 {
   return this->misses;
 }
 
-float Cache::getHitRate()
+float Cache::get_hit_rate()
 {
   return (float(this->hits) / float(this->hits + this->misses));
 }
 
-float Cache::getMissRate()
+float Cache::get_miss_rate()
 {
   return (float(this->misses) / float(this->hits + this->misses));
 }

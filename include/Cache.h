@@ -9,7 +9,7 @@ using namespace std;
 class Cache
 {
 private:
-  static const int tota_sSize = 32;
+  static const int total_size = 32;
   static const int tag_size = 22;
   static const int index_size = 6;
   static const int offset_size = 2;
@@ -34,12 +34,12 @@ public:
   ~Cache();
   string read(string bin_address);
   string write(string bin_address, string data);
-  int getReads();
-  int getWrites();
-  int getHits();
-  int getMisses();
-  float getHitRate();
-  float getMissRate();
+  int get_reads();
+  int get_writes();
+  int get_hits();
+  int get_misses();
+  float get_hit_rate();
+  float get_miss_rate();
 };
 
 #endif

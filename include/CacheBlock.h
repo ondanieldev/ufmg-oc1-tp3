@@ -9,8 +9,8 @@ class CacheBlock
 private:
   string tag;
   string words[4];
-  bool isValid;
-  bool isDirty;
+  bool is_valid;
+  bool is_dirty;
 
 public:
   CacheBlock();

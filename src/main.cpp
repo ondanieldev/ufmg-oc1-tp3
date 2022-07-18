@@ -15,7 +15,7 @@ int main()
 
   string bin_address;
 
-  string output = "", cpuResult;
+  string output = "", cpu_result;
 
   while (cin >> address)
   {
@@ -25,28 +25,28 @@ int main()
     if (operation == 1)
     {
       cin >> data;
-      cpuResult = cache.write(bin_address, data);
+      cpu_result = cache.write(bin_address, data);
       output += " " + data;
     }
     else if (operation == 0)
     {
-      cpuResult = cache.read(bin_address);
+      cpu_result = cache.read(bin_address);
     }
-    output += " " + cpuResult + "\n";
+    output += " " + cpu_result + "\n";
   }
 
   cout << setprecision(3) << "READS:"
-       << " " << cache.getReads() << endl
+       << " " << cache.get_reads() << endl
        << "WRITES:"
-       << " " << cache.getWrites() << endl
+       << " " << cache.get_writes() << endl
        << "HITS:"
-       << " " << cache.getHits() << endl
+       << " " << cache.get_hits() << endl
        << "MISSES:"
-       << " " << cache.getMisses() << endl
+       << " " << cache.get_misses() << endl
        << "HIT RATE:"
-       << " " << cache.getHitRate() << endl
+       << " " << cache.get_hit_rate() << endl
        << "MISS RATE:"
-       << " " << cache.getMissRate() << endl
+       << " " << cache.get_miss_rate() << endl
        << endl
        << output;
 
